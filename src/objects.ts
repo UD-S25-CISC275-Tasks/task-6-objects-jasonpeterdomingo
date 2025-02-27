@@ -127,6 +127,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
         ...oldQuestion,
         id: id,
         name: `Copy of ${oldQuestion.name}`,
+        options: [...oldQuestion.options],
         published: false,
     };
     return duplicated;
@@ -140,7 +141,11 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    return question;
+    const updatedQuestion: Question = {
+        ...question,
+        options: [...question.options, newOption],
+    };
+    return updatedQuestion;
 }
 
 /**
