@@ -80,7 +80,14 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    return "";
+    const formattedBeginning: string = `# ${question.name}\n${question.body}`;
+    if (question.options.length === 0) {
+        return formattedBeginning;
+    }
+    const options: string[] = question.options.map(
+        (option: string): string => "- " + option,
+    );
+    return formattedBeginning + `\n${options.join("\n")}`;
 }
 
 /**
