@@ -95,7 +95,12 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    return question;
+    const questionCopy: Question = {
+        ...question,
+        options: [...question.options],
+        name: newName,
+    };
+    return questionCopy;
 }
 
 /**
